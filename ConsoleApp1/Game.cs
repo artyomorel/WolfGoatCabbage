@@ -6,7 +6,7 @@ namespace ConsoleApp1
     public class Game
     {
         private GameObject[] GameObjects { get; set; } =
-            {new You("You"), new Wolf("Wolf"), new Goat("Goat"), new Cabbage("Cabbage")};
+            {new GameObject("You"), new GameObject("Wolf"), new GameObject("Goat"), new GameObject("Cabbage")};
 
         public bool EndGame { get; set; } = false;
         public bool WinGame { get; set; } = false;
@@ -41,6 +41,9 @@ namespace ConsoleApp1
             {
                 GameObjects[0].Move();
                 GameObjects[numberObject].Move();
+                CheckEndGame();
+                CheckWinGame();
+                CheckStateGame();
             }
             else
             {
@@ -56,8 +59,7 @@ namespace ConsoleApp1
         }
         
         
-        
-        public void CheckWinGame()
+        private void CheckWinGame()
         {
             WinGame = GameObjects[1].GetPosition() 
                    && GameObjects[2].GetPosition() 
@@ -65,12 +67,12 @@ namespace ConsoleApp1
                    && GameObjects[0].GetPosition();
         }
 
-        public void CheckEndGame()
+        private void CheckEndGame()
         {
             if ((GameObjects[1].GetPosition() == GameObjects[2].GetPosition() &&
                  GameObjects[1].GetPosition() != GameObjects[0].GetPosition()) ||
-                ((GameObjects[2].GetPosition() == GameObjects[3].GetPosition() &&
-                  GameObjects[2].GetPosition() != GameObjects[0].GetPosition())))
+                (GameObjects[2].GetPosition() == GameObjects[3].GetPosition() &&
+                 GameObjects[2].GetPosition() != GameObjects[0].GetPosition()))
             {
                 EndGame = true;
             }
@@ -81,7 +83,7 @@ namespace ConsoleApp1
             
         }
 
-        public void CheckStateGame()
+        private void CheckStateGame()
         {
             if (EndGame)
             {

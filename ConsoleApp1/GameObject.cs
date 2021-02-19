@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1
 {
-    public abstract class GameObject
+    public  class GameObject
     {
 
         public GameObject(string name)
@@ -23,6 +23,10 @@
         {
             return _name;
         }
-        
+
+        public bool CheckEndGame(GameObject enemyObject)
+        {
+            return GetPosition() == enemyObject.GetPosition();
+        }
     }
 }

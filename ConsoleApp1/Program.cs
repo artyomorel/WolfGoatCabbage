@@ -48,9 +48,6 @@ namespace ConsoleApp1
                         break;
                 }
 
-                game.CheckEndGame();
-                game.CheckWinGame();
-                game.CheckStateGame();
             }
             Console.ReadKey();
         }
